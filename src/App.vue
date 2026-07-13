@@ -2,6 +2,7 @@
   <div class="wrapper">
     <hero-view/>
     <footer-component/>
+    <router-view/>
   </div>
 </template>
 
