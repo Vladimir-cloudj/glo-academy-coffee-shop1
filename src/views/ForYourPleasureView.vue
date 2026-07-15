@@ -59,6 +59,53 @@ export default {
     components: {
         NavBarComponent,
         ProductCard,
+        data() {
+        return {
+            goods: [
+                {
+                    id:"0",
+                    name:'Solimo Coffee Beans 2kg',
+                    icon: 'coffee-3.jpg',
+                    country: 'Brazil',
+                    price : 10.73
+                },
+                {
+                    id:"1",
+                    name:'Presto Coffee Beans 1kg',
+                    icon: 'coffee-2.jpg',
+                    country: "Brazil",
+                    price : 15.99
+                },
+                {
+                    id:"2",
+                    name:'AROMISTICO Coffee 1kg',
+                    icon: 'coffee-3.jpg',
+                    country: "Brazil",
+                    price : 6.99
+                },
+                {
+                    id:"3",
+                    name:'Solimo Coffee Beans 2kg',
+                    icon: 'coffee-3.jpg',
+                    country: "Brazil",
+                    price : 10.73
+                },
+                {
+                    id:"4",
+                    name:'Solimo Coffee Beans 2kg',
+                    icon: 'coffee-3.jpg',
+                    country: "Brazil",
+                    price : 10.73
+                },
+                {
+                    id:"5",
+                    name:'Solimo Coffee Beans 2kg',
+                    icon: 'coffee-3.jpg',
+                    country: "Brazil",
+                    price : 10.73
+                }
+            ]
+        }}
     }
 }
 </script>
