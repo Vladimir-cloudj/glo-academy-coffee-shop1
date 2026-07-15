@@ -5,16 +5,16 @@
                 <div class="col-lg-6 offset-lg-3">
                     <ul class="footer d-flex flex-wrap">
                         <li class=" footer__item">
-                            <router-link to="/"><img src="@/assets/logo/Logo_black.svg" alt="logo"></router-link>
+                            <router-link :to="links[0].link"><img :src="require(`@/assets/logo/${links[0].icon}`)" :alt="links[0].text"></router-link>
                         </li>
                         <li class="footer__item">
-                            <router-link to="/our-coffee">Our coffee</router-link>
+                            <router-link :to="links[1].link">{{links[1].text}}</router-link>
                         </li>
                         <li class="footer__item">
-                            <router-link to="/for-your-pleasure">For your pleasure</router-link>
+                            <router-link :to="links[2].link">{{links[2].text}}</router-link>
                         </li>
                         <li class="footer__item">
-                             <router-link to="/contacts-us">Contact us</router-link>
+                            <router-link :to="links[3].link">{{links[3].text}}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -24,3 +24,40 @@
     </footer>
 </template>
 
+<script>
+export default {
+    name: 'NavBarComponent',
+    data() {
+        return {
+            links: [
+                {
+                    id: 0,
+                    link:'/',
+                    icon:'Logo.svg'
+                },
+                {
+                    id: 1,
+                    text:'our-coffee',
+                    link:'/our-coffee'
+                },
+                {
+                    id: 2,
+                    text:'for your pleasure',
+                    link:'/for-your-pleasure',
+                    icon:'',
+                },
+                {
+                    id: 3,
+                    text:'contacts us',
+                    link:'/contacts-us',
+                },
+                //  {
+                //     id: 4,
+                //     text:'thanks',
+                //     link:'/thanks',
+                // }
+            ]
+        }
+    },
+}
+</script>

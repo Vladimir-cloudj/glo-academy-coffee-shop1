@@ -68,6 +68,29 @@ export default {
     components: {
         NavBarComponent,
         ProductCard,
+        data() {
+        return {
+            goods: [
+                {
+                    id:"0",
+                    name:'Solimo Coffee Beans 2kg',
+                    icon: 'coffee-1.jpg',
+                    price : 10.73
+                },
+                {
+                    id:"1",
+                    name:'Presto Coffee Beans 1kg',
+                    icon: 'coffee-2.jpg',
+                    price : 15.99
+                },
+                {
+                    id:"2",
+                    name:'AROMISTICO Coffee 1kg',
+                    icon: 'coffee-3.jpg',
+                    price : 6.99
+                }
+            ]
+        }}
     }
 }
 </script>

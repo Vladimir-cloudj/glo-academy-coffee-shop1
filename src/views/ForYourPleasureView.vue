@@ -36,54 +36,12 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="shop__wrapper">
-                            <div class="shop__item">
-                                <img src="@/assets/img/good-1.jpg" alt="coffee">
-                                <div class="shop__item-title">
-                                    Solimo Coffee Beans 2kg
-                                </div>
-                                <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">10.73$</div>
-                            </div>
-                            <div class="shop__item">
-                                <img src="@/assets/img/good-1.jpg" alt="coffee">
-                                <div class="shop__item-title">
-                                    Presto Coffee Beans 1kg
-                                </div>
-                                <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">15.99$</div>
-                            </div>
-                            <div class="shop__item">
-                                <img src="@/assets/img/good-1.jpg" alt="coffee">
-                                <div class="shop__item-title">
-                                    AROMISTICO Coffee 1kg
-                                </div>
-                                <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">6.99$</div>
-                            </div>
-                            <div class="shop__item">
-                                <img src="@/assets/img/good-1.jpg" alt="coffee">
-                                <div class="shop__item-title">
-                                    Solimo Coffee Beans 2kg
-                                </div>
-                                <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">10.73$</div>
-                            </div>
-                            <div class="shop__item">
-                                <img src="@/assets/img/good-1.jpg" alt="coffee">
-                                <div class="shop__item-title">
-                                    Solimo Coffee Beans 2kg
-                                </div>
-                                <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">10.73$</div>
-                            </div>
-                            <div class="shop__item">
-                                <img src="@/assets/img/good-1.jpg" alt="coffee">
-                                <div class="shop__item-title">
-                                    Solimo Coffee Beans 2kg
-                                </div>
-                                <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">10.73$</div>
-                            </div>
+                            <product-card />
+                            <product-card />
+                            <product-card />
+                            <product-card />
+                            <product-card />
+                            <product-card />
                         </div>
                     </div>
                 </div>
@@ -94,13 +52,13 @@
 
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue'
-// import ProductCard from '@/components/ProductCard.vue'
+import ProductCard from '@/components/ProductCard.vue'
 
 
 export default {
     components: {
         NavBarComponent,
-        // ProductCard,
+        ProductCard,
     }
 }
 </script>
