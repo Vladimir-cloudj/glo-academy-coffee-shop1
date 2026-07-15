@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import NavBarComponent from '@/components/NavBarComponent.vue'
+import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from '@/components/ProductCard.vue'
 
 

@@ -8,10 +8,10 @@
                 <router-link to="/our-coffee">Our coffee</router-link>
             </li>
             <li class="header__item">
-                <router-link to="/for-you-pleasure">For your pleasure</router-link>
+                <router-link to="/for-your-pleasure">For your pleasure</router-link>
             </li>
             <li class="header__item">
-                <router-link to="/contact-us">Contact us</router-link>
+                <router-link to="/contacts-us">Contact us</router-link>
             </li>
         </ul>
     </header>
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-    name: 'NarBarComponent'
+    name: 'NavBarComponent'
 }
 </script>
 

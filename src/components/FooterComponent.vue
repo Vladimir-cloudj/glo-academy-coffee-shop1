@@ -11,10 +11,10 @@
                             <router-link to="/our-coffee">Our coffee</router-link>
                         </li>
                         <li class="footer__item">
-                            <a href="./goodspage.html">For your pleasure</a>
+                            <router-link to="/for-your-pleasure">For your pleasure</router-link>
                         </li>
                         <li class="footer__item">
-                            <a href="./contacts.html">Contact us</a>
+                             <router-link to="/contacts-us">Contact us</router-link>
                         </li>
                     </ul>
                 </div>
