@@ -36,12 +36,42 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="shop__wrapper">
-                            <product-card />
-                            <product-card />
-                            <product-card />
-                            <product-card />
-                            <product-card />
-                            <product-card />
+                            <product-card 
+                                classItem = "shop__item"
+                                :name="coffee[0].name"
+                                :price="coffee[0].price"
+                                :image="coffee[0].image"
+                            />
+                            <product-card
+                                classItem = "shop__item" 
+                                :name="coffee[1].name"
+                                :price="coffee[1].price"
+                                :image="coffee[1].image"
+                            />
+                            <product-card 
+                                classItem = "shop__item"
+                                :name="coffee[2].name"
+                                :price="coffee[2].price"
+                                :image="coffee[2].image"
+                            />
+                            <product-card 
+                                classItem = "shop__item"
+                                :name="coffee[3].name"
+                                :price="coffee[3].price"
+                                :image="coffee[3].image"
+                            />
+                            <product-card 
+                                classItem = "shop__item"
+                                :name="coffee[4].name"
+                                :price="coffee[4].price"
+                                :image="coffee[4].image"
+                            />
+                            <product-card 
+                                classItem = "shop__item"
+                                :name="coffee[5].name"
+                                :price="coffee[5].price"
+                                :image="coffee[5].image"
+                            />
                         </div>
                     </div>
                 </div>
@@ -59,53 +89,53 @@ export default {
     components: {
         NavBarComponent,
         ProductCard,
+    },
         data() {
         return {
-            goods: [
+            coffee: [
                 {
                     id:"0",
                     name:'Solimo Coffee Beans 2kg',
-                    icon: 'coffee-3.jpg',
+                    image: 'coffee-3.jpg',
                     country: 'Brazil',
                     price : 10.73
                 },
                 {
                     id:"1",
                     name:'Presto Coffee Beans 1kg',
-                    icon: 'coffee-2.jpg',
+                    image: 'coffee-2.jpg',
                     country: "Brazil",
                     price : 15.99
                 },
                 {
                     id:"2",
                     name:'AROMISTICO Coffee 1kg',
-                    icon: 'coffee-3.jpg',
+                    image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 6.99
                 },
                 {
                     id:"3",
                     name:'Solimo Coffee Beans 2kg',
-                    icon: 'coffee-3.jpg',
+                    image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 10.73
                 },
                 {
                     id:"4",
                     name:'Solimo Coffee Beans 2kg',
-                    icon: 'coffee-3.jpg',
+                    image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 10.73
                 },
                 {
                     id:"5",
                     name:'Solimo Coffee Beans 2kg',
-                    icon: 'coffee-3.jpg',
+                    image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 10.73
                 }
             ]
         }}
-    }
 }
 </script>

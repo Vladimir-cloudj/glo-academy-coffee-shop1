@@ -5,7 +5,12 @@
                 <div class="col-lg-6 offset-lg-3">
                     <ul class="footer d-flex flex-wrap">
                         <li class=" footer__item">
-                            <router-link :to="links[0].link"><img :src="require(`@/assets/logo/${links[0].icon}`)" :alt="links[0].text"></router-link>
+                            <router-link :to="links[0].link">
+                                <img 
+                                :src="require(`@/assets/logo/${links[0].icon}`)" 
+                                :alt="links[0].text"
+                                />
+                            </router-link>
                         </li>
                         <li class="footer__item">
                             <router-link :to="links[1].link">{{links[1].text}}</router-link>
@@ -33,7 +38,7 @@ export default {
                 {
                     id: 0,
                     link:'/',
-                    icon:'Logo.svg'
+                    icon:'Logo_black.svg'
                 },
                 {
                     id: 1,
