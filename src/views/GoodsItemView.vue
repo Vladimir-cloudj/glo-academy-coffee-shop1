@@ -7,7 +7,8 @@
                     <nav-bar-component/>
                 </div>
             </div>
-            <h1 class="title-big">Our Coffee</h1>
+            <!-- <h1 class="title-big">Our Coffee</h1> -->
+            <block-title title="Our Coffee"/>
         </div>
     </div>
 
@@ -45,12 +46,14 @@
 
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue"
+import BlockTitle from '@/components/BlockTitle.vue'
 // import ProductCard from '@/components/ProductCard.vue'
 
 
 export default {
     components: {
         NavBarComponent,
+        BlockTitle,
         // ProductCard,
     }
 }
