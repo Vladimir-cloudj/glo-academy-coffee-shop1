@@ -7,7 +7,6 @@
                         <nav-bar-component/>
                     </div>
                 </div>
-                <!-- <h1 class="title-big">Our Coffee</h1> -->
                 <block-title title="Our Coffee"/>
             </div>
         </div>
@@ -55,41 +54,13 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="shop__wrapper">
-                            <product-card 
-                                classItem = "shop__item"
-                                :name="goods[0].name"
-                                :price="goods[0].price"
-                                :image="goods[0].image"
-                            />
                             <product-card
-                                classItem = "shop__item" 
-                                :name="goods[1].name"
-                                :price="goods[1].price"
-                                :image="goods[1].image"
-                            />
-                            <product-card 
+                                v-for="item in goods"
+                                :key="item.key"
                                 classItem = "shop__item"
-                                :name="goods[2].name"
-                                :price="goods[2].price"
-                                :image="goods[2].image"
-                            />
-                            <product-card 
-                                classItem = "shop__item"
-                                :name="goods[3].name"
-                                :price="goods[3].price"
-                                :image="goods[3].image"
-                            />
-                            <product-card 
-                                classItem = "shop__item"
-                                :name="goods[4].name"
-                                :price="goods[4].price"
-                                :image="goods[4].image"
-                            />
-                            <product-card 
-                                classItem = "shop__item"
-                                :name="goods[5].name"
-                                :price="goods[5].price"
-                                :image="goods[5].image"
+                                :name="item.name"
+                                :price="item.price"
+                                :image="item.image"
                             />
                         </div>
                     </div>
@@ -103,7 +74,7 @@
 import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from "@/components/ProductCard.vue"
 import BlockTitle from '@/components/BlockTitle.vue'
-
+import {v4 as uuidv4} from 'uuid'
 
 export default {
   
@@ -116,42 +87,42 @@ export default {
         return {
             goods: [
                 {
-                    id:"0",
+                    id:uuidv4(),
                     name:'Solimo Coffee Beans 2kg',
                     image: 'coffee-3.jpg',
                     country: 'Brazil',
                     price : 10.73
                 },
                 {
-                    id:"1",
+                    id:uuidv4(),
                     name:'Presto Coffee Beans 1kg',
                     image: 'coffee-2.jpg',
                     country: "Brazil",
                     price : 15.99
                 },
                 {
-                    id:"2",
+                    id:uuidv4(),
                     name:'AROMISTICO Coffee 1kg',
                     image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 6.99
                 },
                 {
-                    id:"3",
+                    id:uuidv4(),
                     name:'Solimo Coffee Beans 2kg',
                     image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 10.73
                 },
                 {
-                    id:"4",
+                    id:uuidv4(),
                     name:'Solimo Coffee Beans 2kg',
                     image: 'coffee-3.jpg',
                     country: "Brazil",
                     price : 10.73
                 },
                 {
-                    id:"5",
+                    id:uuidv4(),
                     name:'Solimo Coffee Beans 2kg',
                     image: 'coffee-3.jpg',
                     country: "Brazil",

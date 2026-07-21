@@ -54,11 +54,6 @@ export default {
                         text:'contacts us',
                         link:'/contacts-us',
                     },
-                    //  {
-                    //     id: 4,
-                    //     text:'thanks',
-                    //     link:'/thanks',
-                    // }
                 ]
             }
         }

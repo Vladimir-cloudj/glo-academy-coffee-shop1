@@ -7,7 +7,6 @@
                     <nav-bar-component/>
                 </div>
             </div>
-            <!-- <h1 class="title-big">Our Coffee</h1> -->
             <block-title title="Our Coffee"/>
         </div>
     </div>
