@@ -1,32 +1,21 @@
 <template>
     <header>
         <ul class="header d-flex justify-content-center justify-content-md-start flex-wrap">
-            <li class="header__item">
-                <router-link :to="links[0].link"><img :src="require(`@/assets/logo/${links[0].icon}`)" :alt="links[0].text"></router-link>
-            </li>
-            <!-- <li class="header__item">
-                <router-link :to="links[1].link">{{links[1].text}}</router-link>
-            </li>
-            <li class="header__item">
-                <router-link :to="links[2].link">{{links[2].text}}</router-link>
-            </li>
-            <li class="header__item">
-                <router-link :to="links[3].link">{{links[3].text}}</router-link>
-            </li> -->
-            <nav-link 
+            <nav-link
+                :link="links.header.link"
                 class="header__item" 
-                :link="links[1].link" 
-                :text="links[1].text"
-            />
+            >
+                <img 
+                    :src="require(`@/assets/logo/${links.header.icon}`)" 
+                    :alt="links.header.text">
+            </nav-link>
+
             <nav-link
-                class="header__item"  
-                :link="links[2].link" 
-                :text="links[2].text"
-            />
-            <nav-link
-                class="header__item"
-                :link="links[3].link" 
-                :text="links[3].text"
+                v-for="link in links.other"
+                :key="link.id"
+                class="header__item" 
+                :link="link.link" 
+                :text="link.text"
             />
         </ul>
     </header>
@@ -41,34 +30,37 @@ export default {
     name: 'NavBarComponent',
     data() {
         return {
-            links: [
-                {
-                    id: 0,
-                    link:'/',
-                    icon:'Logo.svg'
-                },
-                {
-                    id: 1,
-                    text:'our-coffee',
-                    link:'/our-coffee'
-                },
-                {
-                    id: 2,
-                    text:'for your pleasure',
-                    link:'/for-your-pleasure',
-                    icon:'',
-                },
-                {
-                    id: 3,
-                    text:'contacts us',
-                    link:'/contacts-us',
-                },
-                //  {
-                //     id: 4,
-                //     text:'thanks',
-                //     link:'/thanks',
-                // }
-            ]
+            links: {
+                header:
+                    {
+                        id: 0,
+                        link:'/',
+                        icon:'Logo.svg'
+                    },
+                other: [
+                    {
+                        id: 1,
+                        text:'our-coffee',
+                        link:'/our-coffee'
+                    },
+                    {
+                        id: 2,
+                        text:'for your pleasure',
+                        link:'/for-your-pleasure',
+                        icon:'',
+                    },
+                    {
+                        id: 3,
+                        text:'contacts us',
+                        link:'/contacts-us',
+                    },
+                    //  {
+                    //     id: 4,
+                    //     text:'thanks',
+                    //     link:'/thanks',
+                    // }
+                ]
+            }
         }
     },
 }
