@@ -3,7 +3,7 @@
         <ul class="header d-flex justify-content-center justify-content-md-start flex-wrap">
             <nav-link
                 :link="links.header.link"
-                class="header__item" 
+                classLink="header__item" 
             >
                 <img 
                     :src="require(`@/assets/logo/${links.header.icon}`)" 
@@ -13,7 +13,7 @@
             <nav-link
                 v-for="link in links.other"
                 :key="link.id"
-                class="header__item" 
+                classLink="header__item" 
                 :link="link.link" 
                 :text="link.text"
             />

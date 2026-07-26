@@ -13,12 +13,19 @@
                         <img class="beanslogo" src="@/assets/logo/Beans_logo.svg" alt="Beans logo">
                         <div class="preview__subtitle">We makes every day full of energy and taste</div>
                         <div class="preview__subtitle">Want to try our beans?</div>
-                        <router-link to="/our-coffee" class="preview__btn">More</router-link>
+                        <!-- <router-link to="/our-coffee" class="preview__btn">More</router-link> -->
+                        <a
+                            href="./our-coffee.html"
+                            class="preview__btn"
+                            @click.prevent="smoothScroll">
+                        >
+                            More
+                        </a>
                     </div>
                 </div>
             </div>
     </div>
-    <section class="about">
+    <section class="about" id="about" ref="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
@@ -43,7 +50,7 @@
     </section>
     <section class="best">
         <div class="container">
-            <div class="title">Our best</div>
+            <div class="title" ref="ourBest">Our best</div>
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="best__wrapper">
@@ -69,7 +76,7 @@ import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from '@/components/ProductCard.vue'
 import BlockTitle from '@/components/BlockTitle.vue'
 import {v4 as uuidv4} from 'uuid'
-
+import { scrollIntoView } from "seamless-scroll-polyfill";
 
 export default {
     components: {
@@ -99,6 +106,16 @@ export default {
                     price : 6.99
                 }
             ]
-        }}
+        }
+    },
+    methods:{
+        smoothScroll(){
+            scrollIntoView(this.$refs.ourBest, { 
+                behavior: "smooth", 
+                block: "start" 
+            });
+        },
+
+    }
 }
 </script>

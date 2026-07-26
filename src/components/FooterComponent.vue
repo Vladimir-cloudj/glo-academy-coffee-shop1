@@ -6,11 +6,11 @@
                     <ul class="footer d-flex flex-wrap">
                         <nav-link
                             classLink="footer__item"
-                            :link="links.header.link"
+                            :link="links.footer.link"
                         >
                             <img 
-                                :src="require(`@/assets/logo/${links.header.icon}`)" 
-                                :alt="links.header.text"
+                                :src="require(`@/assets/logo/${links.footer.icon}`)" 
+                                :alt="links.footer.text"
                                 />
                         </nav-link>
 
@@ -40,7 +40,7 @@ export default {
     data() {
         return {
             links: {
-                header: {
+                footer: {
                     id: 0,
                     link:'/',
                     icon:'Logo_black.svg'
