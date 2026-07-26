@@ -37,34 +37,10 @@ export default {
         NavLink,
     },
     name: 'FooterComponent',
-    data() {
-        return {
-            links: {
-                footer: {
-                    id: 0,
-                    link:'/',
-                    icon:'Logo_black.svg'
-                },
-                other: [
-                {
-                    id: 1,
-                    text:'our-coffee',
-                    link:'/our-coffee'
-                },
-                {
-                    id: 2,
-                    text:'for your pleasure',
-                    link:'/for-your-pleasure',
-                    icon:'',
-                },
-                {
-                    id: 3,
-                    text:'contacts us',
-                    link:'/contacts-us',
-                },
-                ] 
-            }
+    computed: {
+        links() {
+            return this.$store.getters["getFooterLinks"]
         }
-    },
+    }
 }
 </script>

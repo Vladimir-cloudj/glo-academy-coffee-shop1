@@ -28,36 +28,11 @@ export default {
         NavLink,
     },
     name: 'NavBarComponent',
-    data() {
-        return {
-            links: {
-                header:
-                    {
-                        id: 0,
-                        link:'/',
-                        icon:'Logo.svg'
-                    },
-                other: [
-                    {
-                        id: 1,
-                        text:'our-coffee',
-                        link:'/our-coffee'
-                    },
-                    {
-                        id: 2,
-                        text:'for your pleasure',
-                        link:'/for-your-pleasure',
-                        icon:'',
-                    },
-                    {
-                        id: 3,
-                        text:'contacts us',
-                        link:'/contacts-us',
-                    },
-                ]
-            }
+    computed: {
+        links() {
+            return this.$store.getters["getHeaderLinks"]
         }
-    },
+    }
 }
 </script>
 

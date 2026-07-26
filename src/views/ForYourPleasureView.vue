@@ -56,7 +56,7 @@
 import NavBarComponent from '@/components/NavBarComponent.vue'
 import ProductCard from '@/components/ProductCard.vue'
 import BlockTitle from '@/components/BlockTitle.vue'
-import {v4 as uuidv4} from 'uuid'
+// import {v4 as uuidv4} from 'uuid'
 
 export default {
     components: {
@@ -65,52 +65,57 @@ export default {
         BlockTitle,
 
     },
-        data() {
-        return {
-            coffee: [
-                {
-                    id:uuidv4(),
-                    name:'Solimo Coffee Beans 2kg',
-                    image: 'coffee-3.jpg',
-                    country: 'Brazil',
-                    price : 10.73
-                },
-                {
-                    id:uuidv4(),
-                    name:'Presto Coffee Beans 1kg',
-                    image: 'coffee-2.jpg',
-                    country: "Brazil",
-                    price : 15.99
-                },
-                {
-                    id:uuidv4(),
-                    name:'AROMISTICO Coffee 1kg',
-                    image: 'coffee-3.jpg',
-                    country: "Brazil",
-                    price : 6.99
-                },
-                {
-                    id:uuidv4(),
-                    name:'Solimo Coffee Beans 2kg',
-                    image: 'coffee-3.jpg',
-                    country: "Brazil",
-                    price : 10.73
-                },
-                {
-                    id:uuidv4(),
-                    name:'Solimo Coffee Beans 2kg',
-                    image: 'coffee-3.jpg',
-                    country: "Brazil",
-                    price : 10.73
-                },
-                {
-                    id:uuidv4(),
-                    name:'Solimo Coffee Beans 2kg',
-                    image: 'coffee-3.jpg',
-                    country: "Brazil",
-                    price : 10.73
-                }
-            ]
-        }}
+    computed: {
+        coffee() {
+            return this.$store.getters.getPleasureCoffee;
+        }
+    }
+        // data() {
+        // return {
+        //     coffee: [
+        //         {
+        //             id:uuidv4(),
+        //             name:'Solimo Coffee Beans 2kg',
+        //             image: 'coffee-3.jpg',
+        //             country: 'Brazil',
+        //             price : 10.73
+        //         },
+        //         {
+        //             id:uuidv4(),
+        //             name:'Presto Coffee Beans 1kg',
+        //             image: 'coffee-2.jpg',
+        //             country: "Brazil",
+        //             price : 15.99
+        //         },
+        //         {
+        //             id:uuidv4(),
+        //             name:'AROMISTICO Coffee 1kg',
+        //             image: 'coffee-3.jpg',
+        //             country: "Brazil",
+        //             price : 6.99
+        //         },
+        //         {
+        //             id:uuidv4(),
+        //             name:'Solimo Coffee Beans 2kg',
+        //             image: 'coffee-3.jpg',
+        //             country: "Brazil",
+        //             price : 10.73
+        //         },
+        //         {
+        //             id:uuidv4(),
+        //             name:'Solimo Coffee Beans 2kg',
+        //             image: 'coffee-3.jpg',
+        //             country: "Brazil",
+        //             price : 10.73
+        //         },
+        //         {
+        //             id:uuidv4(),
+        //             name:'Solimo Coffee Beans 2kg',
+        //             image: 'coffee-3.jpg',
+        //             country: "Brazil",
+        //             price : 10.73
+        //         }
+        //     ]
+        // }}
 }
 </script>

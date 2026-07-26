@@ -17,7 +17,7 @@
                         <a
                             href="./our-coffee.html"
                             class="preview__btn"
-                            @click.prevent="smoothScroll">
+                            @click.prevent="smoothScroll"
                         >
                             More
                         </a>
@@ -75,7 +75,7 @@
 import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from '@/components/ProductCard.vue'
 import BlockTitle from '@/components/BlockTitle.vue'
-import {v4 as uuidv4} from 'uuid'
+// import {v4 as uuidv4} from 'uuid'
 import { scrollIntoView } from "seamless-scroll-polyfill";
 
 export default {
@@ -84,30 +84,35 @@ export default {
         ProductCard,
         BlockTitle,
     },
-        data() {
-        return {
-            bestsellers: [
-                {
-                    id:uuidv4(),
-                    name:'Solimo Coffee Beans 2kg',
-                    image: 'coffee-1.jpg',
-                    price : 10.73
-                },
-                {
-                    id:uuidv4(),
-                    name:'Presto Coffee Beans 1kg',
-                    image: 'coffee-2.jpg',
-                    price : 15.99
-                },
-                {
-                    id:uuidv4(),
-                    name:'AROMISTICO Coffee 1kg',
-                    image: 'coffee-3.jpg',
-                    price : 6.99
-                }
-            ]
+    computed: {
+        bestsellers() {
+            return this.$store.getters.getBestsellers;
         }
     },
+    //     data() {
+    //     return {
+    //         bestsellers: [
+    //             {
+    //                 id:uuidv4(),
+    //                 name:'Solimo Coffee Beans 2kg',
+    //                 image: 'coffee-1.jpg',
+    //                 price : 10.73
+    //             },
+    //             {
+    //                 id:uuidv4(),
+    //                 name:'Presto Coffee Beans 1kg',
+    //                 image: 'coffee-2.jpg',
+    //                 price : 15.99
+    //             },
+    //             {
+    //                 id:uuidv4(),
+    //                 name:'AROMISTICO Coffee 1kg',
+    //                 image: 'coffee-3.jpg',
+    //                 price : 6.99
+    //             }
+    //         ]
+    //     }
+    // },
     methods:{
         smoothScroll(){
             scrollIntoView(this.$refs.ourBest, { 
