@@ -103,6 +103,14 @@ const products = {
     getBestsellers: (state) => state.bestsellers,
     getGoods: (state) => state.goods,
     getPleasureCoffee: (state) => state.pleasureCoffee,
+    getCoffeeById: (state) => (id) => {
+      return state.goods.find((card) => String(card.id) === String(id));
+    },
+    getGoodsById: (state) => (id) => {
+      return state.pleasureCoffee.find(
+        (card) => String(card.id) === String(id),
+      );
+    },
   },
 };
 

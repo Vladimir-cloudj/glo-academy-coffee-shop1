@@ -56,12 +56,12 @@
                         <div class="shop__wrapper">
                             <product-card
                                 v-for="item in goods"
-                                :key="item.key"
+                                :key="item.id"
                                 classItem = "shop__item"
-                                :name="item.name"
-                                :price="item.price"
-                                :image="item.image"
+                                :card="item"
+                                @onNavigate="navigate"
                             />
+                            <!-- /our-coffee/item -->
                         </div>
                     </div>
                 </div>
@@ -76,6 +76,8 @@ import ProductCard from "@/components/ProductCard.vue"
 import BlockTitle from '@/components/BlockTitle.vue'
 // import {v4 as uuidv4} from 'uuid'
 
+import {navigate} from '../mixins/navigate'
+
 export default {
   
   components:{
@@ -87,7 +89,20 @@ export default {
     goods() {
         return this.$store.getters.getGoods;
     }
-  }
+  },
+  data () {
+    return {
+        // name: 'goods'
+        name:'coffee'
+    }
+  },
+  mixins: [navigate]
+//   methods:{
+//     navigate(id) {
+//         // console.log('navigate', id);
+//         this.$router.push({name: this.name, params: {id: id}})
+//     }
+//   }
     // data() {
     //     return {
     //         goods: [

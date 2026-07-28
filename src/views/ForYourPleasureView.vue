@@ -38,11 +38,10 @@
                         <div class="shop__wrapper">
                             <product-card
                                 v-for="item in coffee"
-                                :key="item.key"
+                                :key="item.id"
                                 classItem = "shop__item"
-                                :name="item.name"
-                                :price="item.price"
-                                :image="item.image"
+                                :card="item"
+                                @onNavigate="navigate"
                             />
                         </div>
                     </div>
@@ -58,6 +57,8 @@ import ProductCard from '@/components/ProductCard.vue'
 import BlockTitle from '@/components/BlockTitle.vue'
 // import {v4 as uuidv4} from 'uuid'
 
+import {navigate} from '../mixins/navigate'
+
 export default {
     components: {
         NavBarComponent,
@@ -69,7 +70,20 @@ export default {
         coffee() {
             return this.$store.getters.getPleasureCoffee;
         }
-    }
+    },
+    data() {
+        return {
+            // name: 'pleasureCoffee'
+            name: 'goods'
+        }
+    },
+    mixins: [navigate]
+    // methods:{
+    //     navigate(id) {
+    //         console.log('navigate', id);
+    //         this.$router.push({name: this.name, params: {id: id}})
+    //     }
+    // }
         // data() {
         // return {
         //     coffee: [
