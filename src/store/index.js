@@ -1,15 +1,17 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import bestsellers from "./bestsellers";
+import coffee from "./coffee";
+import goods from "./goods";
 import links from "./links";
-import products from './products';
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   modules: {
+    bestsellers,
+    coffee,
+    goods,
     links,
-    products,
-  }
+  },
 });
-
-export default store;

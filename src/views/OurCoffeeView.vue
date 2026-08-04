@@ -55,7 +55,7 @@
                     <div class="col-lg-10 offset-lg-1">
                         <div class="shop__wrapper">
                             <product-card
-                                v-for="item in goods"
+                                v-for="item in coffee"
                                 :key="item.id"
                                 classItem = "shop__item"
                                 :card="item"
@@ -70,85 +70,36 @@
     </main>
 </template>
 
+
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from "@/components/ProductCard.vue"
 import BlockTitle from '@/components/BlockTitle.vue'
-// import {v4 as uuidv4} from 'uuid'
-
 import {navigate} from '../mixins/navigate'
 
 export default {
-  
-  components:{
+  components: {
     NavBarComponent,
     ProductCard,
     BlockTitle,
   },
   computed: {
-    goods() {
-        return this.$store.getters.getGoods;
+    coffee() {
+      return this.$store.getters.getCoffee
     }
   },
-  data () {
+  data() {
     return {
-        // name: 'goods'
-        name:'coffee'
+      name: 'coffee'
     }
   },
-  mixins: [navigate]
-//   methods:{
-//     navigate(id) {
-//         // console.log('navigate', id);
-//         this.$router.push({name: this.name, params: {id: id}})
-//     }
-//   }
-    // data() {
-    //     return {
-    //         goods: [
-    //             {
-    //                 id:uuidv4(),
-    //                 name:'Solimo Coffee Beans 2kg',
-    //                 image: 'coffee-3.jpg',
-    //                 country: 'Brazil',
-    //                 price : 10.73
-    //             },
-    //             {
-    //                 id:uuidv4(),
-    //                 name:'Presto Coffee Beans 1kg',
-    //                 image: 'coffee-2.jpg',
-    //                 country: "Brazil",
-    //                 price : 15.99
-    //             },
-    //             {
-    //                 id:uuidv4(),
-    //                 name:'AROMISTICO Coffee 1kg',
-    //                 image: 'coffee-3.jpg',
-    //                 country: "Brazil",
-    //                 price : 6.99
-    //             },
-    //             {
-    //                 id:uuidv4(),
-    //                 name:'Solimo Coffee Beans 2kg',
-    //                 image: 'coffee-3.jpg',
-    //                 country: "Brazil",
-    //                 price : 10.73
-    //             },
-    //             {
-    //                 id:uuidv4(),
-    //                 name:'Solimo Coffee Beans 2kg',
-    //                 image: 'coffee-3.jpg',
-    //                 country: "Brazil",
-    //                 price : 10.73
-    //             },
-    //             {
-    //                 id:uuidv4(),
-    //                 name:'Solimo Coffee Beans 2kg',
-    //                 image: 'coffee-3.jpg',
-    //                 country: "Brazil",
-    //                 price : 10.73
-    //             }
-    //         ]
-    // }}
+  mixins: [navigate],
+  mounted() {
+    fetch('http://localhost:3000/coffee')
+      .then(res => res.json())
+      .then(data => {
+        this.$store.dispatch('setCoffeeData', data)
+      })
+  }
 }
 </script>

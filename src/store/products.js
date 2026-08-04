@@ -99,6 +99,16 @@ const products = {
       },
     ],
   },
+  mutations: {
+    setCoffeeData(state, data) {
+      state.coffee = data;
+    }
+  },
+  actions: {
+    setCoffeeData({ commit }, data) {
+      commit("setCoffeeData", data);
+    },
+  },
   getters: {
     getBestsellers: (state) => state.bestsellers,
     getGoods: (state) => state.goods,
