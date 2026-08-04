@@ -58,25 +58,30 @@ export default {
     NavBarComponent,
     BlockTitle,
   },
-  data() {
-    return {
-      product: null,
-    };
-  },
+//   data() {
+//     return {
+//       product: null,
+//     };
+//   },
   mounted() {
     const category = this.$route.name === 'coffee' ? 'coffee' : 'goods'
     fetch(`http://localhost:3000/${category}/${this.$route.params.id}`)
       .then(response => response.json())
       .then(data => {
-        this.product = data;
+        // this.product = data;
+        this.$store.dispatch('setCurrentProduct', data)
       })
   },
   destroyed() {
-    this.product = null;
+    // this.product = null;
+    this.$store.dispatch('setCurrentProduct', null)
   },
   computed: {
     pageName() {
       return this.$route.name
+    },
+    product(){
+        return this.$store.getters.getCurrentProduct
     },
     // card() {
     //   const pageGetter = this.pageName === 'coffee' ? 'coffee/getCoffeeById' : 'goods/getGoodsById';
