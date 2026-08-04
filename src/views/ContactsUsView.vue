@@ -66,6 +66,26 @@
                                     </span>
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <div class="col col-12 d-flex justify-content-center align-items-center">
+                                    <input 
+                                        type="checkbox" 
+                                        id="agreement" 
+                                        v-model="$v.agreement.$model"
+                                        style="margin-right: 8px;"
+                                    >
+                                    <label for="agreement" class="mb-0">
+                                        Согласен с договором оферты
+                                        <span style="color: red;">*</span>
+                                    </label>
+                                </div>
+                                <div class="col col-12 text-center">
+                                    <span v-if="$v.agreement.$error" style="color: red; font-size: 0.875em;">
+                                        Необходимо принять условия оферты
+                                    </span>
+                                </div>
+                            </div>
     
                             <div class="row">
                                 <div class="col">
@@ -101,7 +121,8 @@ export default {
             name: '',
             email: '',
             phone: '',
-            message: ''
+            message: '',
+            agreement: true,
         }
     },
     validations: {
@@ -112,7 +133,8 @@ export default {
             required, 
             maxLength: maxLength(20), 
             minLength: helpers.withMessage('this value min 5', minLength) 
-        } 
+        },
+        agreement:{ required }
     },
     methods: {
         async submit() {
@@ -131,13 +153,15 @@ export default {
                 name: this.name,
                 email: this.email,
                 phone: this.phone,
-                message: this.message
+                message: this.message,
+                agreement: this.agreement,
             })
             
             this.name = ''
             this.email = ''
             this.phone = ''
             this.message = ''
+            this.agreement= true,
             this.$v.$reset()
         }
     }
