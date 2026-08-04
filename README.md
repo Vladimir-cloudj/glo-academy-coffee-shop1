@@ -1,24 +1,186 @@
-# glo-academy-coffee-shop
+# Coffee Shop
 
-## Project setup
+SPA-приложение интернет-магазина кофейного магазина, реализованное на Vue 2.  
+Учебный проект курса Glo Academy по Vue.js.
+
+Данные хранятся в mock-API (json-server), приложение умеет получать товары
+по сети, показывать индикатор загрузки, валидировать и сохранять заявки клиентов.
+
+## Скриншоты
+
+<!-- Добавь папку screenshots/ и вставь свои изображения -->
+| Главная | Каталог | Страница товара | Форма контактов |
+|---|---|---|---|
+| *Hero* | *Our Coffee* | *GoodsItem* | *Contact Us* |
+
+## Реализованный функционал
+
+- **Главная страница** — превью, блок "About Us" и карточки бестселлеров
+- **Два каталога** — "Our Coffee" и "For Your Pleasure" с карточками товаров
+- **Динамическая страница товара** — данные подтягиваются по ID из json-server
+- **Переходы по карточкам** — клик по товару открывает его страницу (динамический роутинг)
+- **Индикатор загрузки** — компонент Spinner показывается, пока данные едут с сервера
+- **Форма обратной связи** — валидация через Vuelidate + чекбокс согласия с офертой
+- **Сохранение заявок** — данные формы уходят POST-запросом и сохраняются в db.json
+- **Vuex с модулями** — bestsellers, coffee, goods, links + общий isLoading
+- **Переиспользуемые компоненты** — ProductCard, NavBar, BlockTitle, Spinner и др.
+
+## 🛠 Технологии
+
+| Технология | Назначение |
+|---|---|
+| **Vue 2** | Основной фреймворк (Options API) |
+| **Vue Router** | Маршрутизация, history mode, динамические роуты |
+| **Vuex** | Модульное хранилище данных |
+| **json-server** | Mock-API: GET-получение товаров, POST-сохранение заявок |
+| **fetch API** | HTTP-запросы к json-server |
+| **Vuelidate 0.7** | Валидация формы (required, email, maxLength, кастомные правила) |
+| **Bootstrap (SCSS)** | Сетка и базовые стили |
+| **Vue CLI** | Сборка и dev-сервер |
+| **seamless-scroll-polyfill** | Плавный скролл на главной |
+
+## Архитектурные принципы
+
+- **Single Source of Truth** — все данные лежат в Vuex и json-server
+- **Модульный Vuex** — каждый тип данных в своём модуле (`bestsellers`, `coffee`, `goods`, `links`)
+- **Миксины для общей логики** — `navigate` (переходы по карточкам) и `loading` (управление isLoading)
+- **DRY** — карточка товара `ProductCard` используется на всех страницах каталогов
+- **Глобальные фильтры** — `addCurrency` для форматирования цены
+- **Кастомные валидаторы** — собственный `minLength` в `src/validators/`
+
+## Структура проекта
+
 ```
-npm install
+├── db.json # База данных json-server
+└── src/
+├── assets/ # scss, img, logo
+├── components/
+│ ├── NavBarComponent.vue
+│ ├── NavItem.vue
+│ ├── FooterComponent.vue
+│ ├── ProductCard.vue # Переиспользуемая карточка товара
+│ ├── BlockTitle.vue
+│ └── Spinner.vue # Индикатор загрузки
+├── filters/
+│ └── index.js # Глобальный фильтр addCurrency
+├── mixins/
+│ ├── navigate.js # Переход на страницу товара
+│ └── loading.js # startLoading / endLoading + isLoading
+├── validators/
+│ └── minLength.js # Кастомный валидатор Vuelidate
+├── router/
+│ └── index.js
+├── store/
+│ ├── index.js # Корневой store (isLoading)
+│ ├── bestsellers.js
+│ ├── coffee.js
+│ ├── goods.js
+│ └── links.js
+├── views/
+│ ├── HeroView.vue # Главная
+│ ├── OurCoffeeView.vue # Каталог кофе
+│ ├── ForYourPleasureView.vue # Каталог товаров
+│ ├── GoodsItemView.vue # Страница товара
+│ ├── ContactsUsView.vue # Форма обратной связи
+│ └── ThankYouView.vue
+├── App.vue # Корневой компонент
+└── main.js # Точка входа приложения
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Установка и запуск
+
+### Требования
+- Node.js (версия 12+)
+- npm или yarn
+
+### Шаги установки
+
+1. **Клонировать репозиторий:**
+   ```
+      git clone https://github.com/Vladimir-cloudj/glo-academy-coffee-shop1.git
+      cd glo-academy-coffee-shop1
+   ```
+2. **Установить зависимости:**
+   ```
+      npm install
+   ```
+3. **Запустить json-server (терминал №2):**
+   ```
+      json-server --watch db.json
+   ```
+4. **Запустить dev-сервер:**
+   ```
+      npm run serve
+   ```
+5. **Открыть в браузере:**
+   ```
+      http://localhost:8080/
+   ```
+**Важно:** оба сервера должны работать одновременно — приложение ходит за данными на порт 3000.
+
+*Сборка для продакшена*
+   ```
+      npm run build
+   ```
+### Ключевые маршруты
+| Маршрут                | Компонент           | Описание                    |
+| ---------------------- | ------------------- | --------------------------- |
+| /	                     | HeroView            | Главная + бестселлеры       |
+| /our-coffee            | OurCoffeeView       | Каталог кофе                |
+| /our-coffee/:id        | GoodsItemView       | Страница конкретного кофе   |
+| /for-your-pleasure     | ForYourPleasureView | Каталог товаров             |
+| /for-your-pleasure/:id | GoodsItemView       | Страница товара             |
+| /contacts-us           | ContactsUsView      | Форма с валидацией          |
+| /thanks                | ThanksView          | Страница благодарности      |
+
+## Как это работает
+
+1. При загрузке приложения Vuex-модуль tours.js инициализирует массив из 6 туров с уникальными UUID.
+2. ToursView получает список через геттер getAllTours и отрисовывает его через v-for.
+3. При клике на карточку TourCard срабатывает router-link с объектной записью маршрута.
+4. TourSingleView получает ID из URL через $route.params.id и находит тур через геттер getTourById.
+5. Если тур не найден (неверный ID), отображается сообщение "Тур не найден" благодаря v-if/v-else.
+
+## ️ Фильтры
+
+В проекте используется глобальный фильтр `truncate` для форматирования текста:
+
+```javascript
+Vue.filter('truncate', (text, length = 400, suffix = '...') => {
+  if (!text) return '';
+  if (text.length <= length) return text;
+  return text.substring(0, length) + suffix;
+});
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+**Использование в компонентах:**
+```vue
+{{ tour.description | truncate(400) }}
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**Преимущества:**
+- Переиспользуемость во всех компонентах
+- Настраиваемая длина обрезки
+- Автоматическое добавление многоточия
+
+## Чему я научился в этом проекте
+- Создавать SPA на Vue.js с нуля
+- Работать с Vue Router и динамическими маршрутами
+- Организовывать хранилище данных с помощью Vuex и модулей
+- Использовать геттеры с параметрами (каррирование)
+- Применять v-for, v-if, v-else для условного рендеринга
+- Писать переиспользуемые компоненты с пропсами
+- Использовать require() для динамической подгрузки изображений
+- Создавать и подключать глобальные фильтры (`truncate`) для форматирования данных
+- Использовать `router-link` с объектной записью маршрута (`:to="{ name, params }"`)
+- Обрабатывать ошибки (несуществующий ID) через `v-if/v-else`
+- Подключать внешние стили (Bootstrap) и кастомные CSS в `main.js`
+- Писать профессиональный README с документацией проекта
+
+## Возможные улучшения
+- Добавить страницу 404 для несуществующих маршрутов
+- Реализовать поиск и фильтрацию туров
+- Добавить пагинацию списка туров
+- Подключить реальный API вместо захардкоженных данных
+- Добавить анимации переходов между страницами (<transition>)
+- Реализовать lazy loading компонентов
