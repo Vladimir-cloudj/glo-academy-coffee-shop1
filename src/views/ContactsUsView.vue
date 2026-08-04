@@ -106,7 +106,7 @@ import BlockTitle from '@/components/BlockTitle.vue'
 
 
 import { required, email, maxLength } from 'vuelidate/lib/validators'
-import { helpers } from '@vuelidate/validators'
+// import { helpers } from '@vuelidate/validators'
 import {minLength} from '../validators/minLength.js'
 
 
@@ -132,15 +132,16 @@ export default {
         message: { 
             required, 
             maxLength: maxLength(20), 
-            minLength: helpers.withMessage('this value min 5', minLength) 
+            minLength: minLength,
+            // minLength: helpers.withMessage('this value min 5', minLength) 
         },
         agreement:{ required }
     },
     methods: {
-        async submit() {
-            const isFormCorrect = await this.v$.$validate()
-            if (!isFormCorrect) return
-        },
+        // async submit() {
+        //     const isFormCorrect = await this.v$.$validate()
+        //     if (!isFormCorrect) return
+        // },
         handleSubmit() {
             this.$v.$touch()
             
