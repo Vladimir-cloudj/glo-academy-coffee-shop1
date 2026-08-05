@@ -54,13 +54,16 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="shop__wrapper">
-                            <product-card
-                                v-for="item in coffee"
-                                :key="item.id"
-                                classItem = "shop__item"
-                                :card="item"
-                                @onNavigate="navigate"
-                            />
+                            <spinner v-if="isLoading" />
+                            <template v-else>
+                                <product-card
+                                    v-for="item in coffee"
+                                    :key="item.id"
+                                    classItem = "shop__item"
+                                    :card="item"
+                                    @onNavigate="navigate"
+                                />
+                            </template>
                             <!-- /our-coffee/item -->
                         </div>
                     </div>
@@ -75,14 +78,18 @@
 import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from "@/components/ProductCard.vue"
 import BlockTitle from '@/components/BlockTitle.vue'
+import Spinner from '@/components/LoadingSpinner.vue'
 import {navigate} from '../mixins/navigate'
+import { loadingMixin } from '../mixins/loading'
 
 export default {
   components: {
     NavBarComponent,
     ProductCard,
     BlockTitle,
+    Spinner,
   },
+  mixins: [navigate, loadingMixin],
   computed: {
     coffee() {
       return this.$store.getters.getCoffee
@@ -93,13 +100,18 @@ export default {
       name: 'coffee'
     }
   },
-  mixins: [navigate],
+//   mixins: [navigate],
   mounted() {
+    this.startLoading();
     fetch('http://localhost:3000/coffee')
       .then(res => res.json())
       .then(data => {
         this.$store.dispatch('setCoffeeData', data)
       })
+      .catch(err => console.error('Ошибка загрузки:', err))
+      .finally(() => {
+      this.endLoading();
+    });
   }
 }
 </script>

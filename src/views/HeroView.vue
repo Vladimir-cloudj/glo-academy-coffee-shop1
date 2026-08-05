@@ -46,12 +46,15 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <product-card
-                v-for="product in bestsellers"
-                :key="product.id"
-                classItem="best__item"
-                :card="product"
-              />
+              <spinner v-if="isLoading" />
+              <template v-else>
+                <product-card
+                  v-for="product in bestsellers"
+                  :key="product.id"
+                  classItem="best__item"
+                  :card="product"
+                />
+              </template>
             </div>
           </div>
         </div>
@@ -63,22 +66,30 @@
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue"
 import ProductCard from '@/components/ProductCard.vue'
+import Spinner from '@/components/LoadingSpinner.vue'
+import { loadingMixin } from '../mixins/loading'
 
 export default {
   components: {
     NavBarComponent,
     ProductCard,
+    Spinner,
   },
+  mixins: [loadingMixin],
   computed: {
     bestsellers() {
       return this.$store.getters.getBestsellers
     }
   },
   mounted() {
+    this.startLoading();
     fetch('http://localhost:3000/bestsellers')
       .then(res => res.json())
       .then(data => {
         this.$store.dispatch('setBestsellers', data)
+      })
+      .finally(() => {
+        this.endLoading();
       })
   }
 }

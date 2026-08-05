@@ -34,13 +34,16 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card
-                v-for="item in goods"
-                :key="item.id"
-                classItem="shop__item"
-                :card="item"
-                @onNavigate="navigate"
-              />
+              <spinner v-if="isLoading" />
+              <template v-else>
+                <product-card
+                  v-for="item in goods"
+                  :key="item.id"
+                  classItem="shop__item"
+                  :card="item"
+                  @onNavigate="navigate"
+                />
+              </template>
             </div>
           </div>
         </div>
@@ -52,26 +55,34 @@
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue'
 import ProductCard from '@/components/ProductCard.vue'
+import Spinner from '@/components/LoadingSpinner.vue'
 import {navigate} from '../mixins/navigate'
+import { loadingMixin } from '../mixins/loading'
 
 export default {
   components: {
     NavBarComponent,
     ProductCard,
+    Spinner,
   },
+  mixins: [navigate, loadingMixin],
   computed: {
     goods() {
       return this.$store.getters.getGoods
     }
   },
   mounted() {
+    this.startLoading();
     fetch('http://localhost:3000/goods')
       .then(res => res.json())
       .then(data => {
         this.$store.dispatch('setGoods', data)
       })
+      .finally( () =>{
+        this.endLoading()
+      } )
   },
-  mixins: [navigate],
+  // mixins: [navigate],
   data() {
     return {
       name: 'goods'
